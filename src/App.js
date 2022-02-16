@@ -1,25 +1,58 @@
-import logo from './logo.svg';
+import React, { Component } from "react";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+export default class App extends Component {
+  state = {
+    number: 0,
+    msg: "Mini Contador"
+  };
+
+  add = () => {
+    if (this.state.number < 10) {
+      this.setState({
+        number: this.state.number + 1,
+        msg: "Mini Contador"
+      });
+    } else {
+      this.setState({
+        msg: "O máximo é 10!"
+      });
+    }
+  };
+
+  reset = () =>{
+    this.setState({
+      number: this.state.number =0,
+      msg: "Mini Contador"
+    });
+  };
+
+  remove = () => {
+    if (this.state.number > 0) {
+      this.setState({
+        number: this.state.number - 1,
+        msg: "Mini Contador"
+
+      });
+    } else {
+      this.setState({
+        msg: "O mínimo é 0!"
+      });
+    }
+  };
+
+  render() {
+    return (
+      <div className = "box">
+        <div>
+             <button className="add" onClick={this.add}>Somar</button>
+              <h1>{this.state.number}</h1>
+              <button className="remove" onClick={this.remove}>Subtrair</button>
+              <h2>{this.state.msg}</h2>
+              <button className="reset" onClick={this.reset}>Resetar</button>
+        </div>
+      </div>
+    );
+  }
+}
