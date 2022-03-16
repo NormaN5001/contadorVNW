@@ -1,6 +1,46 @@
 import React, { Component } from "react";
-import './App.css';
+import styled from 'styled-components';
+import {createGlobalStyle} from 'styled-components'
 
+const GlobalStyle = createGlobalStyle`
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`
+
+const Box = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10vh;
+  flex-direction: column;
+`
+const Add = styled.button`
+  width: 150px;
+  height: 35px;
+  background-color: green;
+  border-style: none;
+  border-radius: 3px;
+`
+const Remove = styled.button`
+  width: 150px;
+  height: 35px;
+  background-color: red;
+  border-style: none;
+  border-radius: 3px;
+`
+const Text2 = styled.h2`
+  margin-top: 30px;
+`
+const Reset = styled.button`
+  width: 150px;
+  height: 35px;
+  background-color: blue;
+  border-style: none;
+  border-radius: 3px;
+  margin-top: 5px;
+`
 
 export default class App extends Component {
   state = {
@@ -44,14 +84,15 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className = "box">
-        <div>
-             <button className="add" onClick={this.add}>Somar</button>
+      <div>
+      <GlobalStyle/>
+        <Box>
+             <Add onClick={this.add}>Somar</Add>
               <h1>{this.state.number}</h1>
-              <button className="remove" onClick={this.remove}>Subtrair</button>
-              <h2>{this.state.msg}</h2>
-              <button className="reset" onClick={this.reset}>Resetar</button>
-        </div>
+              <Remove onClick={this.remove}>Subtrair</Remove>
+              <Text2>{this.state.msg}</Text2>
+              <Reset onClick={this.reset}>Resetar</Reset>
+        </Box>
       </div>
     );
   }
